@@ -23,8 +23,8 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Export</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="http://localhost:5000/ExportCsv" target="_blank">Export CSV</a></li>
-            <li><a class="dropdown-item" href="http://localhost:5000/ExportXml" target="_blank">Export XML</a></li>
+            <li><a class="dropdown-item" (click)="ExportCSV()">Export CSV</a></li>
+            <li><a class="dropdown-item" (click)="ExportXML()">Export XML</a></li>
           </ul>
         </li>
       </ul>

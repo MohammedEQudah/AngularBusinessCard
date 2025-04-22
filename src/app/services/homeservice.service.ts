@@ -51,5 +51,37 @@ export class HomeserviceService {
       alert('Something Wrong')
     }
   }
+  ExportCSV() {
+    this.http.get('https://localhost:7035/api/Card/ExportCsv', { responseType: 'blob' }).subscribe(
+      (response: any) => {
+        // Create a link element to simulate a download
+        const blob = new Blob([response], { type: 'text/csv' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'business_cards.csv';  // The filename you want to save as
+        link.click();  // Simulate a click to download
+      },
+      (err: any) => {
+        alert('Something went wrong!');
+      }
+    );
+  }
 
+  ExportXML() {
+    this.http.get('https://localhost:7035/api/Card/ExportXml', { responseType: 'blob' }).subscribe(
+      (response: any) => {
+        // Create a blob from the response and create a link to download it
+        const blob = new Blob([response], { type: 'application/xml' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'business_cards.xml';  // The filename you want to save as
+        link.click();  // Simulate a click to trigger the download
+      },
+      (err: any) => {
+        alert('Something went wrong!');
+      }
+    );
+  }
+  
+  
 }

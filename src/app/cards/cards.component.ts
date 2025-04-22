@@ -23,10 +23,10 @@ export class CardsComponent implements OnInit{
         if (result == 'yes')
           this.home.DeleteCard(id);
         else if (result == 'no')
-          console.log('Deleted');
+          console.log('Thanks');
       }
     });
   }
-  
+ 
     
 }

@@ -47,7 +47,8 @@
   <div class="row g-4" *ngIf="home.Cards && (home.Cards | cardFilter:searchValue:selectedFilter).length > 0">
     <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let card of home.Cards | cardFilter:searchValue:selectedFilter">
       <div class="card h-100 shadow rounded-4 border-0 card-hover animate-fade-in">
-        <img src="../assets/Images/businessCard.png" class="card-img-top p-4" alt="Avatar" />
+        <img *ngIf="card.imagepath =='null'" src="../../assets/Images/businessCard.png" class="card-img-top p-4" alt="Avatar" />
+        <img *ngIf="card.imagepath!='null'" src="../../assets/CardImages/{{card.imagepath}}" class="card-img-top p-4" alt="Avatar" />
         <div class="card-body">
           <h5 class="card-title fw-bold">{{card.name}}</h5>
           <p class="card-text text-muted mb-1">📧 {{card.email}}</p>

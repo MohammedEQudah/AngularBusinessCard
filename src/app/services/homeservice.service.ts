@@ -32,6 +32,7 @@ export class HomeserviceService {
   CreateCard(body:any)
   {
     debugger
+    body.imagepath=this.display_image
     this.http.post('https://localhost:7035/api/Card/CreateCard',body).subscribe((resp:any)=>{
       alert("Card Added Successfully")
       location.reload()

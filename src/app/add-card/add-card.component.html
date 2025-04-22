@@ -1,0 +1,115 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-5 mb-5">
+  <div class="card shadow rounded-4 border-0 p-4">
+    <h4 class="mb-4 text-center fw-semibold">Add New Card</h4>
+
+    <form enctype="multipart/form-data" [formGroup]="CardForm">
+      <div class="row g-3" style="padding-bottom: 5%;">
+       
+
+        <!-- Full Name -->
+        <div class="col-md-6">
+          <label for="name" class="form-label">Full Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter full name"
+            formControlName="name"
+            required
+          />
+          <span class="text-danger" *ngIf="CardForm.controls['name'].hasError('required')"> Required</span>
+        </div>
+
+        <!-- Email -->
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter email address"
+            formControlName="email"
+            required
+          />
+          <span class="text-danger" *ngIf="CardForm.controls['email'].hasError('required')"> Required</span>
+          <span class="text-danger" *ngIf="CardForm.controls['email'].hasError('email')"> Required email</span>
+        </div>
+
+        <!-- Phone -->
+        <div class="col-md-6">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="phone"
+            placeholder="Enter phone number"
+            formControlName="phone"
+            required
+          />
+
+          <span class="text-danger" *ngIf="CardForm.controls['phone'].hasError('required')"> Required</span>
+
+        </div>
+
+        <!-- Address -->
+        <div class="col-md-6">
+          <label for="address" class="form-label">Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            placeholder="Enter address"
+            formControlName="address"
+            required
+          />
+          <span class="text-danger" *ngIf="CardForm.controls['address'].hasError('required')"> Required</span>
+
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="col-md-6">
+          <label for="dob" class="form-label">Date of Birth</label>
+          <input
+            type="date"
+            class="form-control"
+            formControlName="dateofbirth"
+            id="dob"
+            required
+          />
+          <span class="text-danger" *ngIf="CardForm.controls['dateofbirth'].hasError('required')"> Required</span>
+
+        </div>
+
+        <!-- Gender -->
+        <div class="col-md-6">
+          <label for="gender" class="form-label">Gender</label>
+          <select class="form-select" id="gender" required formControlName="gender">
+            <option selected disabled value="">Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <span class="text-danger" *ngIf="CardForm.controls['gender'].hasError('required')"> Required</span>
+
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="photo" class="form-label">Upload Photo</label>
+        <input
+          type="file"
+          #file
+          formControlName="imagepath"
+          (change)="UploadImage(file.files)"
+          required
+        />
+      </div>
+      <!-- Submit Button -->
+      <div class="text-end mt-4">
+        <button type="submit" class="btn btn-primary px-4 py-2" (click)="AddCard()" [disabled]="!CardForm.valid">Add Card</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-footer></app-footer>

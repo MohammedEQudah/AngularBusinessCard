@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+    <a class="navbar-brand" href="">Business Cards</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="/addCard" routerLinkActive="active">Add Card</a>
+        </li>
+       
+        <li class="nav-item">
+          <a class="nav-link" href="Cards" routerLinkActive="active">View Cards</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">import</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="http://localhost:5000/ExportCsv" target="_blank">import CSV</a></li>
+            <li><a class="dropdown-item" href="http://localhost:5000/ExportXml" target="_blank">import XML</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Export</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="http://localhost:5000/ExportCsv" target="_blank">Export CSV</a></li>
+            <li><a class="dropdown-item" href="http://localhost:5000/ExportXml" target="_blank">Export XML</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  

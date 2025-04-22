@@ -1,0 +1,81 @@
+<app-navbar></app-navbar>
+
+<div class="container mt-4" style="padding-top: 2%; padding-bottom: 8%;">
+  <h3 class="animated-heading">All Cards</h3>
+
+  <div class="input-group mb-4 shadow-sm" style="max-width: 600px;">
+    <select class="form-select w-auto rounded-start-4" [(ngModel)]="selectedFilter" name="filterType">
+      <option value="name">Name</option>
+      <option value="email">Email</option>
+      <option value="phone">Phone</option>
+      <option value="dateofbirth">Date of Birth</option>
+      <option value="gender">Gender</option>
+    </select>
+  
+    
+    <input
+      *ngIf="selectedFilter !== 'gender'"
+      [attr.type]="selectedFilter === 'dateofbirth' ? 'date' : 'text'"
+      class="form-control"
+      [(ngModel)]="searchValue"
+      name="searchValue"
+      placeholder="Search..."
+    />
+  
+    
+    <select
+      *ngIf="selectedFilter === 'gender'"
+      class="form-select"
+      [(ngModel)]="searchValue"
+      name="searchValue">
+      <option disabled selected value="">Select gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+  
+    <button class="btn btn-outline-primary rounded-end-4" type="button">
+      🔍
+    </button>
+  </div>
+  
+  
+
+  <div *ngIf="(home.Cards | cardFilter:searchValue:selectedFilter)?.length === 0" class="alert alert-warning text-center mt-4" style="margin-bottom: 22%;">
+    <strong>No cards found!</strong> Try a different search. <a href="">Back to home</a>
+  </div>
+
+  <div class="row g-4" *ngIf="home.Cards && (home.Cards | cardFilter:searchValue:selectedFilter).length > 0">
+    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let card of home.Cards | cardFilter:searchValue:selectedFilter">
+      <div class="card h-100 shadow rounded-4 border-0 card-hover animate-fade-in">
+        <img src="../assets/Images/businessCard.png" class="card-img-top p-4" alt="Avatar" />
+        <div class="card-body">
+          <h5 class="card-title fw-bold">{{card.name}}</h5>
+          <p class="card-text text-muted mb-1">📧 {{card.email}}</p>
+          <p class="card-text text-muted mb-1">📱 {{card.phone}}</p>
+          <p class="card-text text-muted mb-1">🏠 {{card.address}}</p>
+          <p class="card-text text-muted">🗓️ {{card.dateofbirth | date:'longDate'}}</p>
+        </div>
+        <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center">
+          <!-- Delete button -->
+          <button class="btn btn-sm btn-outline-danger px-3" (click)="openDeleteDailog(card.id)">
+            🗑️ Delete
+          </button>
+  
+          <!-- Gender badge -->
+          <span class="badge bg-secondary px-3 py-2">{{card.gender}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<app-footer></app-footer>
+<ng-template #callDeleteDialog>
+    <div style="padding: 15px;">
+        <h2>Are You Sure Want To Dlete This Card ?</h2>
+        <button class="btn btn-primary m-1" mat-dialog-close="yes">Yes</button>
+        <button class="btn btn-danger m-1" mat-dialog-close="no">No</button>
+    </div>
+
+</ng-template>

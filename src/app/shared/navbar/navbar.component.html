@@ -16,8 +16,8 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">import</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="http://localhost:5000/ExportCsv" target="_blank">import CSV</a></li>
-            <li><a class="dropdown-item" href="http://localhost:5000/ExportXml" target="_blank">import XML</a></li>
+            <li><a class="dropdown-item" (click)="OpenCSVDialog()">import CSV</a></li>
+            <li><a class="dropdown-item" (click)="OpenXMLDialog()">import XML</a></li>
           </ul>
         </li>
         <li class="nav-item dropdown">
@@ -31,3 +31,14 @@
     </div>
   </nav>
   
+<ng-template #callCSVImport>
+  <div class="csv-dialog-container">
+    <h2>Import CSV</h2>
+    <input type="file" accept=".csv" (change)="onCSVSelected($event)" />
+  </div>
+
+</ng-template>
+
+<ng-template #callXMLImport>
+ 
+</ng-template>

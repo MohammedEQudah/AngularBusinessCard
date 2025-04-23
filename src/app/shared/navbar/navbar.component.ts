@@ -24,7 +24,7 @@ export class NavbarComponent {
   {
     this.dialog.open(this.callCSVImport, {
       width: '600px',
-      height: '400px',
+      height: '320px',
       panelClass: 'custom-dialog-container' // Optional for custom styling
     });
   }
@@ -32,7 +32,7 @@ export class NavbarComponent {
   {
     this.dialog.open(this.callXMLImport, {
       width: '600px',
-      height: '400px',
+      height: '320px',
       panelClass: 'custom-dialog-container' 
     });
   }
@@ -80,7 +80,52 @@ onCSVSelected(event: any): void {
   }
 }
 
-  
+selectedXMLFileName: string = '';
+
+onXMLSelected(event: any): void {
+  event.preventDefault();
+  this.isDragging = false;
+
+  let file: File | null = null;
+
+  if (event.dataTransfer?.files?.length) {
+    file = event.dataTransfer.files[0]; // Drag & drop
+  } else if (event.target?.files?.length) {
+    file = event.target.files[0]; // File input
+  }
+
+  if (file && file.name.toLowerCase().endsWith('.xml')) {
+    this.selectedXMLFileName = file.name;
+
+    this.home.importXML(file).subscribe({
+      next: (res) => {
+        alert('XML imported successfully!');
+        console.log(res);
+      },
+      error: (err) => {
+        alert('Something went wrong while importing XML.');
+        console.error(err);
+      }
+    });
+  } else {
+    alert('Please select a valid XML file.');
+    this.selectedXMLFileName = '';
+  }
+}
+
+
+
+
+
+closeCSVDialog()
+{
+  this.dialog.closeAll();
+}
+
+closeXMLDialog()
+{
+  this.dialog.closeAll();
+}
   
   
 }

@@ -55,9 +55,41 @@
         Selected file: <strong>{{ selectedFileName }}</strong>
       </p>
     </div>
+    <button (click)="closeCSVDialog()" class="close-btn" style="margin-left: 5px; margin-top: 50px;">Close</button>
   </ng-template>
   
 
-<ng-template #callXMLImport>
- 
-</ng-template>
+  <ng-template #callXMLImport>
+    <div
+      class="csv-dialog-container"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onXMLSelected($event)"
+      [class.drag-over]="isDragging"
+    >
+      <h2>Import XML</h2>
+  
+      <div class="drop-zone">
+        <p>Drag & drop your XML file here or click to upload</p>
+        <input
+          type="file"
+          accept=".xml"
+          (change)="onXMLSelected($event)"
+          class="file-input"
+        />
+      </div>
+  
+      <p *ngIf="selectedXMLFileName" class="file-name">
+        Selected file: <strong>{{ selectedXMLFileName }}</strong>
+      </p>
+    </div>
+  
+    <button
+      (click)="closeXMLDialog()"
+      class="close-btn"
+      style="margin-left: 5px; margin-top: 50px;"
+    >
+      Close
+    </button>
+  </ng-template>
+  

@@ -1,3 +1,6 @@
+# use microsoft visual studio code to open angular project
+  download from here https://code.visualstudio.com/
+
 # Edit the links 
 
 go to homeservice.service.ts 
@@ -17,6 +20,8 @@ go back to api project
 and copy the path in 
 uploadimage method inside CardController 
 on this line (var fullPath = Path.Combine("YourPath", fileName));
+
+
 
 # BusinessCard
 

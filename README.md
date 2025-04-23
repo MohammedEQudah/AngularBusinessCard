@@ -1,7 +1,7 @@
 # Edit the links 
 
 go to homeservice.service.ts 
-full path (app/services/homeservice.service.ts) 
+full path (src/app/services/homeservice.service.ts) 
 to update the links inside it 
 example from project 
 (https://localhost:7035/api/Card/GetAllCards)
@@ -10,6 +10,13 @@ how to change it
 run one of the api using swagger testing tool 
 and copy it to all methods inside angular project (only number)
 
+# Edit path 
+on (src/app/assets/CardImages) 
+click Right then chose copy path 
+go back to api project 
+and copy the path in 
+uploadimage method inside CardController 
+on this line (var fullPath = Path.Combine("YourPath", fileName));
 
 # BusinessCard
 

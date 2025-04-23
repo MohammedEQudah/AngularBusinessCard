@@ -13,12 +13,8 @@
         <li class="nav-item">
           <a class="nav-link" href="Cards" routerLinkActive="active">View Cards</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">import</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" (click)="OpenCSVDialog()">import CSV</a></li>
-            <li><a class="dropdown-item" (click)="OpenXMLDialog()">import XML</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link" href="importCard" routerLinkActive="active">Import Cards</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Export</a>
@@ -31,12 +27,5 @@
     </div>
   </nav>
   
-  <ng-template #callCSVImport>
-   
-  </ng-template>
-  
-
-  <ng-template #callXMLImport>
-   
-  </ng-template>
+ 
   

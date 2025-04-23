@@ -9,6 +9,7 @@ import { CardsComponent } from './cards/cards.component';
 import { AddCardComponent } from './add-card/add-card.component';
 import { CardFilterPipe } from './pipes/card-filter.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ImportCardComponent } from './import-card/import-card.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CardsComponent,
     AddCardComponent,
     CardFilterPipe,
+    ImportCardComponent,
   ],
   imports: [
     BrowserModule,

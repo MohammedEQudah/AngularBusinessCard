@@ -83,22 +83,7 @@ export class HomeserviceService {
       }
     );
   }
-  importCSV(file: File) {
-    const formData = new FormData();
-    formData.append('file', file);
-  
-    return this.http.post('https://localhost:7035/api/Card/ImportCsv', formData, {
-      responseType: 'text'  //because the backend return text
-    });
-  }
-  importXML(file: File) {
-    const formData = new FormData();
-    formData.append('file', file);
-  
-    return this.http.post('https://localhost:7035/api/Card/ImportXml', formData, {
-      responseType: 'text'  
-    });
-  }
+ 
   
   
 }

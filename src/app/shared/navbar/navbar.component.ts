@@ -8,8 +8,7 @@ import { HomeserviceService } from 'src/app/services/homeservice.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  @ViewChild('callCSVImport') callCSVImport!: TemplateRef<any>;
-  @ViewChild('callXMLImport') callXMLImport!: TemplateRef<any>;
+ 
 
   constructor(public home:HomeserviceService,public dialog:MatDialog){}
   ExportCSV()
@@ -20,22 +19,7 @@ export class NavbarComponent {
   {
     this.home.ExportXML();
   }
-  OpenCSVDialog()
-  {
-    this.dialog.open(this.callCSVImport, {
-      width: '600px',
-      height: '320px',
-      panelClass: 'custom-dialog-container' // Optional for custom styling
-    });
-  }
-  OpenXMLDialog()
-  {
-    this.dialog.open(this.callXMLImport, {
-      width: '600px',
-      height: '320px',
-      panelClass: 'custom-dialog-container' 
-    });
-  }
+  
   
   
   

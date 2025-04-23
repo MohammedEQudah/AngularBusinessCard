@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<div class="upload-container" style="margin-top: 13%; margin-bottom: 13%;" *ngIf="records.length===0">
+  <!-- Combined File Input -->
+  <div class="file-drop" (drop)="handleDrop($event)" (dragover)="handleDragOver($event)">
+    <input type="file" accept=".csv,.xml" (change)="handleFileInput($event)" hidden #fileInput>
+    <button (click)="fileInput.click()">Upload CSV or XML File</button>
+    <p>Drag & Drop CSV or XML File Here</p>
+  </div>
+</div>
+
+<!-- Card Preview -->
+<h2 style="text-align: center; margin-top: 5px;" *ngIf="records.length!=0">Preview Cards</h2>
+<div class="card-container" style="margin-top: 2%; margin-bottom: 2%;">
+    
+  <div class="card" *ngFor="let record of records">
+    <img [src]="record.Imagepath || '../../assets/Images/businessCard.png'" alt="Card Image">
+    <p hidden><strong>Id:</strong> {{ record.Id }}</p>
+    <p><strong>Name:</strong> {{ record.Name }}</p>
+    <p><strong>Email:</strong> {{ record.Email }}</p>
+    <p><strong>Gender:</strong> {{ record.Gender }}</p>
+    <p><strong>Date of Birth:</strong> {{ record.Dateofbirth }}</p>
+    <p><strong>Phone:</strong> {{ record.Phone }}</p>
+    <p><strong>Address:</strong> {{ record.Address }}</p>
+  </div>
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+<app-footer></app-footer>

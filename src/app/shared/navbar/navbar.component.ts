@@ -36,24 +36,50 @@ export class NavbarComponent {
       panelClass: 'custom-dialog-container' 
     });
   }
-  onCSVSelected(event: any) {
-    const file: File = event.target.files[0];
-  
-    if (file && file.name.endsWith('.csv')) {
-      this.home.importCSV(file).subscribe({
-        next: (res) => {
-          alert('CSV imported successfully!');
-          console.log(res);
-        },
-        error: (err) => {
-          alert('Something went wrong while importing CSV.');
-          console.error(err);
-        }
-      });
-    } else {
-      alert('Please select a valid CSV file.');
-    }
+  isDragging = false;
+selectedFileName: string = '';
+
+onDragOver(event: DragEvent) {
+  event.preventDefault();
+  this.isDragging = true;
+}
+
+onDragLeave(event: DragEvent) {
+  event.preventDefault();
+  this.isDragging = false;
+}
+
+onCSVSelected(event: any): void {
+  event.preventDefault();
+  this.isDragging = false;
+
+  let file: File | null = null;
+
+  if (event.dataTransfer?.files?.length) {
+    file = event.dataTransfer.files[0]; // From drop
+  } else if (event.target?.files?.length) {
+    file = event.target.files[0]; // From input
   }
+
+  if (file && file.name.toLowerCase().endsWith('.csv')) {
+    this.selectedFileName = file.name;
+
+    this.home.importCSV(file).subscribe({
+      next: (res) => {
+        alert('CSV imported successfully!');
+        console.log(res);
+      },
+      error: (err) => {
+        alert('Something went wrong while importing CSV.');
+        console.error(err);
+      }
+    });
+  } else {
+    alert('Please select a valid CSV file.');
+    this.selectedFileName = '';
+  }
+}
+
   
   
   

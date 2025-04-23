@@ -95,13 +95,14 @@
         </div>
       </div>
       <div class="col-12">
-        <label for="photo" class="form-label">Upload Photo</label>
+        <label for="photo" class="form-label">Upload Photo </label>
         <input
           type="file"
           #file
           formControlName="imagepath"
           (change)="UploadImage(file.files)"
           required
+          class="custom-file-input"
         />
       </div>
       <!-- Submit Button -->

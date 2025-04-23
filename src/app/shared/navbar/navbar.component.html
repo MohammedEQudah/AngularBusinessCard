@@ -31,13 +31,32 @@
     </div>
   </nav>
   
-<ng-template #callCSVImport>
-  <div class="csv-dialog-container">
-    <h2>Import CSV</h2>
-    <input type="file" accept=".csv" (change)="onCSVSelected($event)" />
-  </div>
-
-</ng-template>
+  <ng-template #callCSVImport>
+    <div
+      class="csv-dialog-container"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onCSVSelected($event)"
+      [class.drag-over]="isDragging"
+    >
+      <h2>Import CSV</h2>
+  
+      <div class="drop-zone">
+        <p>Drag & drop your CSV file here or click to upload</p>
+        <input
+          type="file"
+          accept=".csv"
+          (change)="onCSVSelected($event)"
+          class="file-input"
+        />
+      </div>
+  
+      <p *ngIf="selectedFileName" class="file-name">
+        Selected file: <strong>{{ selectedFileName }}</strong>
+      </p>
+    </div>
+  </ng-template>
+  
 
 <ng-template #callXMLImport>
  

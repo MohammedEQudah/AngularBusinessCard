@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Papa } from 'ngx-papaparse';
+import { HomeserviceService } from '../services/homeservice.service';
+
 
 @Component({
   selector: 'app-import-card',
@@ -8,13 +10,14 @@ import { Papa } from 'ngx-papaparse';
 })
 export class ImportCardComponent {
   records: any[] = [];
+  selectedFile: File | null = null;
 
-  constructor(private papa: Papa) {}
+  constructor(private papa: Papa, public home:HomeserviceService) {}
 
   handleFileInput(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      this.processFile(file);
+    this.selectedFile = event.target.files[0];
+    if (this.selectedFile) {
+      this.processFile(this.selectedFile);
     }
   }
 
@@ -22,6 +25,7 @@ export class ImportCardComponent {
     event.preventDefault();
     const file = event.dataTransfer?.files[0];
     if (file) {
+      this.selectedFile = file;
       this.processFile(file);
     }
   }
@@ -95,5 +99,36 @@ export class ImportCardComponent {
     }
 
     this.records = parsed;
+  }
+
+  submit() {
+    if (this.selectedFile) {
+      const fileExtension = this.selectedFile.name.split('.').pop()?.toLowerCase();
+
+      if (fileExtension === 'csv') {
+        this.home.uploadCsv(this.selectedFile).subscribe(
+          (response:any) => {
+            alert('CSV Saved Successfully');
+            console.log('CSV file uploaded successfully:', response);
+          },
+          (error:any) => {
+            console.error('Error uploading CSV:', error);
+          }
+        );
+      } else if (fileExtension === 'xml') {
+        this.home.uploadXml(this.selectedFile).subscribe(
+          (response:any) => {
+            alert('XML Saved Successfully');
+            console.log('XML file uploaded successfully:', response);
+          }
+        );
+      } else {
+        alert('Unspported file type')
+        console.error('Unsupported file type');
+      }
+    } else {
+      alert('No File Selected')
+      console.error('No file selected');
+    }
   }
 }

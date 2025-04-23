@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +85,23 @@ export class HomeserviceService {
     );
   }
  
+  //  upload CSV
+  uploadCsv(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.post(`https://localhost:7035/api/Card/ImportCsv`, formData, {
+      responseType: 'text' as 'json'
+    });
+  }
+  
+  uploadXml(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.post(`https://localhost:7035/api/Card/ImportXml`, formData, {
+      responseType: 'text' as 'json'
+    });
+  }
+  
   
   
 }

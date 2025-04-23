@@ -1,6 +1,8 @@
 # importent steps 
-1- run this command on terminal inside project (Get-ExecutionPolicy) if give you (restricted) run this command (Set-ExecutionPolicy RemoteSigned -Scope CurrentUser) 
+1- run this command on terminal inside project (Get-ExecutionPolicy) if give you (restricted) run this command (Set-ExecutionPolicy RemoteSigned -Scope CurrentUser)
+
 2- install npm by run this comman inside project terminal (npm install)
+
 3- install angular cli by run this command inside project terminal (npm install -g @angular/cli)
 
 

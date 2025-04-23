@@ -1,3 +1,16 @@
+# Edit the links 
+
+go to homeservice.service.ts 
+full path (app/services/homeservice/) 
+to update the links inside it 
+example from project 
+(https://localhost:7035/api/Card/GetAllCards)
+you must change the number after localhost 
+how to change it 
+run one of the api using swagger testing tool 
+and copy it to all methods inside angular project (only number)
+
+
 # BusinessCard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.

@@ -1,7 +1,7 @@
 # Edit the links 
 
 go to homeservice.service.ts 
-full path (app/services/homeservice/) 
+full path (app/services/homeservice.service.ts) 
 to update the links inside it 
 example from project 
 (https://localhost:7035/api/Card/GetAllCards)

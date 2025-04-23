@@ -110,6 +110,7 @@ export class ImportCardComponent {
           (response:any) => {
             alert('CSV Saved Successfully');
             console.log('CSV file uploaded successfully:', response);
+            location.reload();
           },
           (error:any) => {
             console.error('Error uploading CSV:', error);
@@ -120,15 +121,20 @@ export class ImportCardComponent {
           (response:any) => {
             alert('XML Saved Successfully');
             console.log('XML file uploaded successfully:', response);
+            location.reload();
           }
         );
       } else {
         alert('Unspported file type')
         console.error('Unsupported file type');
+        location.reload();
+
       }
     } else {
       alert('No File Selected')
       console.error('No file selected');
+      location.reload();
+
     }
   }
 }
